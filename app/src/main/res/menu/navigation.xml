@@ -13,7 +13,7 @@
 
     <item
         android:id="@+id/navigation_switchShifts"
-        android:icon="@drawable/ic_notifications_black_24dp"
+        android:icon="@drawable/switch_icon"
         android:title="@string/title_switchShifts" />
 
 </menu>
