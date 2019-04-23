@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView message;
+    private TextView mTextMessage;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -18,13 +18,14 @@ public class MainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    message.setText(R.string.title_home);
+                    mTextMessage.setText(R.string.title_home);
                     return true;
                 case R.id.navigation_viewSchedule:
-                    message.setText(R.string.title_viewSchedule);
+                    mTextMessage.setText(R.string.title_viewSchedule);
+                    new DisplaySchedule().execute();
                     return true;
                 case R.id.navigation_switchShifts:
-                    message.setText(R.string.title_switchShifts);
+                    mTextMessage.setText(R.string.title_switchShifts);
                     return true;
             }
             return false;
@@ -36,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        message = (TextView) findViewById(R.id.message);
+        mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
