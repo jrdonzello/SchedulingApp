@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 case R.id.navigation_viewSchedule:
                     mTextMessage.setText(R.string.title_viewSchedule);
+                    new DisplaySchedule().execute();
                     return true;
                 case R.id.navigation_switchShifts:
                     mTextMessage.setText(R.string.title_switchShifts);
