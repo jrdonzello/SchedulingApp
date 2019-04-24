@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
     String name = "aclanan"; // CHANGE::ME to User type //
+    private User user;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -41,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        user = (User)getIntent().getSerializableExtra("user");
 
         mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);

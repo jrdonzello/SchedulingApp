@@ -25,7 +25,6 @@ public class DisplaySchedule extends AsyncTask<String,Void,List<Schedule>> {
     protected SchedAdapter schedAdapter;
     protected String name;
 
-
     public DisplaySchedule(String name, List<Schedule> schedules,SchedAdapter schedAdapter){
         this.name = name;
         this.schedules = schedules;
