@@ -1,5 +1,6 @@
 package cs4330.cs.utep.scheduleapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -7,10 +8,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
+    String name = "aclanan"; // CHANGE::ME to User type //
     private User user;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -23,8 +26,9 @@ public class MainActivity extends AppCompatActivity {
                     mTextMessage.setText(R.string.title_home);
                     return true;
                 case R.id.navigation_viewSchedule:
-                    mTextMessage.setText(R.string.title_viewSchedule);
-                    new DisplaySchedule().execute();
+                    Intent displaySched = new Intent(MainActivity.this,ScheduleActivity.class);
+                    displaySched.putExtra("name",name); // User //
+                    startActivity(displaySched);
                     return true;
                 case R.id.navigation_switchShifts:
                     mTextMessage.setText(R.string.title_switchShifts);
