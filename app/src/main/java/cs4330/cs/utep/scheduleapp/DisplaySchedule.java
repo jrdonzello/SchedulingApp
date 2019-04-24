@@ -17,7 +17,7 @@ import java.util.Iterator;
 
 import javax.net.ssl.HttpsURLConnection;
 
-public class DisplaySchedule extends AsyncTask<String,Void,String> {
+public class  DisplaySchedule extends AsyncTask<String,Void,String> {
     protected String name = "aclanan";
     protected String start;
     protected String end;
@@ -33,10 +33,7 @@ public class DisplaySchedule extends AsyncTask<String,Void,String> {
 
     @Override
     protected String doInBackground(String... params) {
-//        String jsonResponse = null;
-//        String json_data = params[0];
-//        HttpURLConnection httpURLConnection = null;
-//        BufferedReader bufferedReader = null;
+
         Log.d("ANDREW","Downloading...");
         try {
             URL url = new URL("http://helper.at.utep.edu/scheduling_app/EmployeeSchedule.php");
