@@ -1,5 +1,6 @@
 package cs4330.cs.utep.scheduleapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -20,14 +21,17 @@ public class MainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    mTextMessage.setText(R.string.title_home);
+                    //mTextMessage.setText(R.string.title_home);
+                    Intent i = new Intent(MainActivity.this, HomeScreenActivity.class);
+                    i.putExtra("user", user);
+                    startActivity(i);
                     return true;
                 case R.id.navigation_viewSchedule:
-                    mTextMessage.setText(R.string.title_viewSchedule);
-                    new DisplaySchedule().execute();
+                    //mTextMessage.setText(R.string.title_viewSchedule);
+                    //new DisplaySchedule().execute();
                     return true;
                 case R.id.navigation_switchShifts:
-                    mTextMessage.setText(R.string.title_switchShifts);
+                    //mTextMessage.setText(R.string.title_switchShifts);
                     return true;
             }
             return false;

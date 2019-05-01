@@ -11,7 +11,6 @@ import android.util.Log;
 
 import org.json.*;
 
-
 import java.io.*;
 import java.net.*;
 import java.util.Iterator;
@@ -65,8 +64,8 @@ public class Login extends AsyncTask<String, Void, User> {
                     }
                     in.close();
                     JSONObject jsonObject = new JSONObject(sb.toString());
+                    //Log.d("LOGIN", sb.toString());
                     user = new User(jsonObject.getString("username"), jsonObject.getString("first"), jsonObject.getString("last"), jsonObject.getBoolean("admin"));
-
                     return user;
                 }else{
                     return null;
