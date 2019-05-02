@@ -12,6 +12,7 @@ public class ScheduleActivity extends AppCompatActivity {
     ArrayList<Schedule> schedules = new ArrayList<Schedule>();
     ListView listView;
     String name; //User//
+    User user;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

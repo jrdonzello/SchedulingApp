@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
                     //mTextMessage.setText(R.string.title_viewSchedule);
                     //new DisplaySchedule().execute();
                     Intent displaySched = new Intent(MainActivity.this,ScheduleActivity.class);
-                    displaySched.putExtra("name",name); // User //
+                    displaySched.putExtra("user",user); // User //
                     startActivity(displaySched);
                     return true;
                 case R.id.navigation_switchShifts:
