@@ -3,8 +3,11 @@ package cs4330.cs.utep.scheduleapp;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import org.json.JSONObject;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.type.TypeFactory;
 
+
+import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.InputStreamReader;
@@ -14,17 +17,18 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.Iterator;
+import java.util.List;
 
-import javax.net.ssl.HttpsURLConnection;
+//Gets the schedule for given name and updates the given adapter //
+public class DisplaySchedule extends AsyncTask<String,Void,List<Schedule>> {
+    protected List<Schedule> schedules;
+    protected SchedAdapter schedAdapter;
+    protected String name;
 
-public class DisplaySchedule extends AsyncTask<String,Void,String> {
-    protected String name = "aclanan";
-    protected String start;
-    protected String end;
-    protected String track;
-
-    public DisplaySchedule(){
-
+    public DisplaySchedule(String name, List<Schedule> schedules,SchedAdapter schedAdapter){
+        this.name = name;
+        this.schedules = schedules;
+        this.schedAdapter = schedAdapter;
     }
 
     protected void onPreExecute() {
@@ -32,19 +36,15 @@ public class DisplaySchedule extends AsyncTask<String,Void,String> {
     }
 
     @Override
-    protected String doInBackground(String... params) {
-//        String jsonResponse = null;
-//        String json_data = params[0];
-//        HttpURLConnection httpURLConnection = null;
-//        BufferedReader bufferedReader = null;
+    protected List<Schedule> doInBackground(String... params) {
         Log.d("ANDREW","Downloading...");
+        ObjectMapper mapper = new ObjectMapper();
         try {
             URL url = new URL("http://helper.at.utep.edu/scheduling_app/EmployeeSchedule.php");
-
             JSONObject postDataParams = new JSONObject();
             postDataParams.put("name", name);
-            Log.d("ANDREW", postDataParams.toString());
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+
             conn.setReadTimeout(15000);
             conn.setConnectTimeout(15000);
             conn.setRequestMethod("POST");
@@ -68,14 +68,17 @@ public class DisplaySchedule extends AsyncTask<String,Void,String> {
                     sb.append(line);
                 }
                 in.close();
-                return sb.toString();
+                TypeFactory typeFactory = mapper.getTypeFactory();
+                this.schedules = mapper.readValue(sb.toString(),typeFactory.constructCollectionType(List.class,Schedule.class));
+                return schedules;
             }else{
-                return "False: " + responseCode;
+               Log.d("ANDREW","False: " + responseCode);
             }
 
         }catch(Exception e){
-            return new String("Exception: " + e.getMessage());
+            return null;
         }
+        return null;
     }
 
     public String getPostDataString(JSONObject params)throws Exception{
@@ -99,9 +102,13 @@ public class DisplaySchedule extends AsyncTask<String,Void,String> {
     }
 
     @Override
-    protected void onPostExecute(String result) {
-        super.onPostExecute(result);
-        Log.d("ANDREW", result);
+    protected void onPostExecute(List<Schedule> result) {
+       if(result == null){
+           Log.d("ANDREW", "Null ref");
+       }
+        schedules = result;
+        schedAdapter.schedules.addAll(schedules);
+        schedAdapter.notifyDataSetChanged();
     }
 }
 
