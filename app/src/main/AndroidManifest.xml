@@ -16,14 +16,14 @@
         <activity android:name=".ChooseShiftActivity"/>
         <activity android:name=".ScheduleActivity"/>
         <activity android:name=".SwitchActivity"/>
+
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER"/>
-
                 <!--<category android:name="android.intent.category.DEFAULT" />-->
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
         <activity
@@ -31,8 +31,7 @@
             android:label="ScheduleApp">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.DEFAULT" />  <!-- change to main -->
-
+                <!--<category android:name="android.intent.category.LAUNCHER"/>-->
             </intent-filter>
         </activity>
     </application>

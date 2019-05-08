@@ -1,12 +1,13 @@
 package cs4330.cs.utep.scheduleapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -16,10 +17,11 @@ public class LoginActivity extends AppCompatActivity {
 
     protected String result;
 
-    protected void login(View view) {
-        new Login().execute(username.getText().toString(), password.getText().toString());
-    }
+    protected User user;
 
+    protected void login(View view) {
+        new Login(user, this).execute(username.getText().toString(), password.getText().toString());
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +31,6 @@ public class LoginActivity extends AppCompatActivity {
         username = findViewById(R.id.usernameField);
         password = findViewById(R.id.passwordField);
         login = findViewById(R.id.loginButton);
-
-
     }
 
 }

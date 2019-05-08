@@ -1,9 +1,8 @@
 package cs4330.cs.utep.scheduleapp;
 
-import android.os.AsyncTask;
 
 import java.io.Serializable;
-import java.util.List;
+
 
 class User implements Serializable {
     protected String username;
