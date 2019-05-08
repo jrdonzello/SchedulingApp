@@ -15,7 +15,6 @@ public class LoginActivity extends AppCompatActivity {
     private EditText password;
     private Button login;
 
-    protected String result;
 
     protected User user;
 

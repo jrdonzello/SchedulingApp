@@ -8,12 +8,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
-    String name = "aclanan"; // CHANGE::ME to User type //
     private User user;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -23,16 +21,25 @@ public class MainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    mTextMessage.setText(R.string.title_home);
+                    //mTextMessage.setText(R.string.title_home);
+                    Intent i = new Intent(MainActivity.this, HomeScreenActivity.class);
+                    i.putExtra("user", user);
+                    startActivity(i);
                     return true;
                 case R.id.navigation_viewSchedule:
+                    //mTextMessage.setText(R.string.title_viewSchedule);
+                    //new DisplaySchedule().execute();
                     Intent displaySched = new Intent(MainActivity.this,ScheduleActivity.class);
-                    displaySched.putExtra("name",name); // User //
+                    displaySched.putExtra("user",user); // User //
                     startActivity(displaySched);
                     return true;
                 case R.id.navigation_switchShifts:
+
                     Intent switchShifts = new Intent(MainActivity.this,SwitchActivity.class);
                     startActivity(switchShifts);
+
+                    //mTextMessage.setText(R.string.title_switchShifts);
+
                     return true;
             }
             return false;
