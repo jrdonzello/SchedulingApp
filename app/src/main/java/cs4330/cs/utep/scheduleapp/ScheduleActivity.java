@@ -3,6 +3,7 @@ package cs4330.cs.utep.scheduleapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.ListView;
 import java.util.ArrayList;
 
@@ -25,6 +26,5 @@ public class ScheduleActivity extends AppCompatActivity {
         new DisplaySchedule(name,schedules,schedAdapter).execute();
         listView = findViewById(R.id.listView);
         listView.setAdapter(schedAdapter);
-
     }
 }

@@ -13,7 +13,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
-    String name = "aclanan"; // CHANGE::ME to User type //
+    String name = "aclanan";
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -30,8 +30,10 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(displaySched);
                     return true;
                 case R.id.navigation_switchShifts:
-                    mTextMessage.setText(R.string.title_switchShifts);
+                    Intent switchShifts = new Intent(MainActivity.this,SwitchActivity.class);
+                    startActivity(switchShifts);
                     return true;
+
             }
             return false;
         }
