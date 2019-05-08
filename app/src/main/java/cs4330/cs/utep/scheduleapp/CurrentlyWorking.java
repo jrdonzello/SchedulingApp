@@ -49,8 +49,6 @@ public class CurrentlyWorking extends AsyncTask<String, Void, ArrayList<String>>
             postDataParams.put("day", day);
             postDataParams.put("time", time);
 
-            Log.d("CW", day + " " + time);
-
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setReadTimeout(15000);
             conn.setConnectTimeout(15000);
