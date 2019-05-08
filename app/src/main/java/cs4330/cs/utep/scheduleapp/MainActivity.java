@@ -105,7 +105,12 @@ public class MainActivity extends AppCompatActivity {
                     //setContentView();
                     return true;
                 case R.id.navigation_switchShifts:
+
+                    Intent switchShifts = new Intent(MainActivity.this,SwitchActivity.class);
+                    startActivity(switchShifts);
+
                     //mTextMessage.setText(R.string.title_switchShifts);
+
                     return true;
             }
             return false;

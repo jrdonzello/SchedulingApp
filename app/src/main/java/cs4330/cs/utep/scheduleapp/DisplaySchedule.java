@@ -44,6 +44,7 @@ public class DisplaySchedule extends AsyncTask<String,Void,List<Schedule>> {
             JSONObject postDataParams = new JSONObject();
             postDataParams.put("name", name);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+
             conn.setReadTimeout(15000);
             conn.setConnectTimeout(15000);
             conn.setRequestMethod("POST");
@@ -69,7 +70,6 @@ public class DisplaySchedule extends AsyncTask<String,Void,List<Schedule>> {
                 in.close();
                 TypeFactory typeFactory = mapper.getTypeFactory();
                 this.schedules = mapper.readValue(sb.toString(),typeFactory.constructCollectionType(List.class,Schedule.class));
-                Log.d("ANDREW",sb.toString());
                 return schedules;
             }else{
                Log.d("ANDREW","False: " + responseCode);
