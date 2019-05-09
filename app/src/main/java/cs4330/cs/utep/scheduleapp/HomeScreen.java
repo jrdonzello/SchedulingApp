@@ -91,7 +91,8 @@ public class HomeScreen extends AsyncTask<String, Void, Schedule> {
             Log.d("HomeScreen", "Empty result");
         }
         else {
-            this.nextShift.setText(result.day +" " +result.start+"-"+result.end+" "+result.track);
+//            Log.d("ANDREW","Result " + result.start);
+//            this.nextShift.setText(result.day +" " +result.start+"-"+result.end+" "+result.track);
         }
     }
 

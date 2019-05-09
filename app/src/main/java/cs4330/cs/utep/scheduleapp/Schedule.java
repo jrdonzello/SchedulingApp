@@ -1,6 +1,8 @@
 package cs4330.cs.utep.scheduleapp;
 
-public class Schedule {
+import java.io.Serializable;
+
+public class Schedule implements Serializable {
 
     protected String start;
     protected String end;
