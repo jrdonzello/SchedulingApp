@@ -72,11 +72,13 @@ public class HomeScreen extends AsyncTask<String, Void, Schedule> {
                 }
                 in.close();
                 JSONArray jsonArray = new JSONArray((sb.toString()));
+                Log.d("ANDREW",sb.toString());
                 JSONObject jsonObject = jsonArray.getJSONObject(0);
                 Schedule nextShift = new Schedule(jsonObject.getString("start"), jsonObject.getString("end"), jsonObject.getString("day"), jsonObject.getString("track"), jsonObject.getString("username"));
 
-                return  nextShift;
+                return nextShift;
             }else{
+                Log.d("ANDREW","NOT OK");
                 return null;
             }
         } catch(Exception e){
@@ -91,8 +93,8 @@ public class HomeScreen extends AsyncTask<String, Void, Schedule> {
             Log.d("HomeScreen", "Empty result");
         }
         else {
-//            Log.d("ANDREW","Result " + result.start);
-//            this.nextShift.setText(result.day +" " +result.start+"-"+result.end+" "+result.track);
+            Log.d("ANDREW","Result " + result.start);
+            this.nextShift.setText(result.day +" " +result.start+"-"+result.end+" "+result.track);
         }
     }
 
