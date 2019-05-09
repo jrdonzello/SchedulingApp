@@ -60,7 +60,7 @@ public class HomeFragment extends Fragment {
     }
 
     protected void getCurrentDate() {
-        DateFormat df = new SimpleDateFormat("HH:mm:ssa");
+        DateFormat df = new SimpleDateFormat("hh:mm:ssa");
         Date date = new Date();
         currentDate = df.format(date);
     }
