@@ -77,7 +77,6 @@ public class CurrentlyWorking extends AsyncTask<String, Void, ArrayList<String>>
                     JSONObject jsonObject = jsonArray.getJSONObject(i);
                     list.add(jsonObject.getString("first") + " " + jsonObject.getString("last"));
                 }
-                Log.d("LIST:" , list.toString());
                 return list;
             }else{
                 return null;

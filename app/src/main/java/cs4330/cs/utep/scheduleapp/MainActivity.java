@@ -1,12 +1,19 @@
 package cs4330.cs.utep.scheduleapp;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
@@ -19,6 +26,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+
+import static android.app.NotificationChannel.DEFAULT_CHANNEL_ID;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<String> list;
 
     protected void getCurrentDate() {
-        DateFormat df = new SimpleDateFormat("HH:mm:ssa");
+        DateFormat df = new SimpleDateFormat("hh:mm:ssa");
         Date date = new Date();
         currentDate = df.format(date);
     }
@@ -122,7 +132,6 @@ public class MainActivity extends AppCompatActivity {
         //mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-
 
     }
 
