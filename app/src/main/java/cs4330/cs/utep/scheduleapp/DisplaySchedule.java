@@ -37,7 +37,7 @@ public class DisplaySchedule extends AsyncTask<String,Void,List<Schedule>> {
 
     @Override
     protected List<Schedule> doInBackground(String... params) {
-        Log.d("ANDREW","Downloading...");
+        Log.d("ANDREW","Downloading Schedule...");
         ObjectMapper mapper = new ObjectMapper();
         try {
             URL url = new URL("http://helper.at.utep.edu/scheduling_app/EmployeeSchedule.php");
