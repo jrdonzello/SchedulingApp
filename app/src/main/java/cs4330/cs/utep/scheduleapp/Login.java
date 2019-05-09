@@ -93,7 +93,7 @@ public class Login extends AsyncTask<String, Void, User> {
         }
         else {
             user = result;
-            Intent i = new Intent(context , MainActivity.class);
+            Intent i = new Intent(context, MainActivity.class);
             i.putExtra("user", user);
             context.startActivity(i);
         }
